@@ -1,74 +1,61 @@
 # 📊 Olist E-Commerce Business Analytics (End-to-End Data Project)
-📌 Deskripsi Proyek
-Proyek ini merupakan simulasi end-to-end data analytics menggunakan dataset nyata dari Olist, perusahaan e-commerce raksasa asal Brazil. Tujuan utama dari proyek ini adalah untuk mengekstrak data mentah dari database relasional yang kompleks, mengolahnya menjadi metrik bisnis yang bermakna, dan menyajikannya dalam bentuk dashboard interaktif tingkat eksekutif.
+📌 Project Description
+This project is an end-to-end data analytics simulation using a real-world dataset from Olist, a giant Brazilian e-commerce company. The main objective of this project is to extract raw data from a complex relational database, transform it into meaningful business metrics, and present it in an executive-level interactive dashboard.
 
-Analisis ini mencakup evaluasi kesehatan finansial (pendapatan & tren pesanan), efisiensi operasional logistik, perilaku konsumen, hingga tingkat kepuasan pelanggan.
+The analysis covers financial health evaluation (revenue & order trends), logistics operational efficiency, consumer behavior, and customer satisfaction levels.
 
-🛠️ Tech Stack & Tools
+## 🛠️ Tech Stack & Tools
 Database Management: MySQL
 
 SQL IDE: DBeaver
 
 Data Visualization & BI: Tableau Public
 
-Teknik Analisis Utama: Multi-table JOIN (hingga 4 tabel), Data Aggregation (SUM, AVG, COUNT), Date/Time Manipulation, dan Database Performance Optimization (INDEXING).
+Core Analytical Techniques: Multi-table JOIN (up to 4 tables), Data Aggregation (SUM, AVG, COUNT), Date/Time Manipulation, and Database Performance Optimization (INDEXING).
 
-📂 Struktur Dataset
-Analisis ini mengekstraksi dan menggabungkan data dari 6 tabel berbeda di dalam skema database Olist:
+## 📂 Dataset Structure
+This analysis extracts and joins data from 6 different tables within the Olist database schema:
 
-olist_orders_dataset
+- olist_orders_dataset
+- olist_order_items_dataset
+- olist_products_dataset
+- olist_customers_dataset
+- olist_sellers_dataset
+- olist_order_reviews_dataset
 
-olist_order_items_dataset
+## 🧠 Business Questions & Queries
+This project answers 9 strategic business questions (Full SQL queries are available in the olist_ecommerce_analysis.sql file):
 
-olist_products_dataset
+1. Monthly Sales Trend: How does the order volume move over time?
+2. Top Product Categories: Which product categories generate the highest total revenue?
+3. Customer Demographics: Which cities do the majority of Olist customers come from?
+4. Payment Preferences: What is the most frequently used payment method by customers?
+5. Logistics Efficiency: What is the average time (in days) from when a customer clicks the buy button until the goods arrive?
+6. Peak Hour Analysis: At what times do customers most frequently make purchases?
+7. Distribution Centers (Sellers): Which 5 cities are the origins of the most active sellers?
+8. Customer Satisfaction: What is the distribution of star ratings (1-5) across all orders?
+9. Specific Cohort Analysis (The Final Boss): What are the top 3 product categories with the highest revenue specifically from buyers residing in Sao Paulo? (Involves joining 4 tables).
 
-olist_customers_dataset
+## 🚀 Performance Optimization Highlight
+During the execution of a complex query (Task 9) joining 4 tables with hundreds of thousands of rows, a heavy computational load anomaly occurred, taking up to 3 minutes to execute (Full Table Scan).
+This issue was successfully resolved by implementing Database Indexing (CREATE INDEX) techniques on Foreign Key columns and Filter parameters, drastically cutting down the execution time to mere seconds.
 
-olist_sellers_dataset
+## 📈 Dashboard & Visualizations
+The results from the SQL extraction were visualized into two interactive dashboards in Tableau tailored for different audiences:
 
-olist_order_reviews_dataset
+Executive Summary: Displays high-level KPIs (Total Revenue, Total Orders, Average Delivery Time) for C-Level business performance evaluation.
 
-🧠 Business Questions & Queries
-Proyek ini menjawab 9 pertanyaan bisnis strategis (Kueri SQL lengkap tersedia di file olist_ecommerce_analysis.sql):
+Operational & Behavior: Analyzes field operations, transaction peak hour distributions, and compares seller vs. buyer demographics.
 
-Tren Penjualan Bulanan: Bagaimana pergerakan jumlah pesanan dari waktu ke waktu?
+🔗 [Click here to view the Interactive Dashboard on Tableau Public](https://public.tableau.com/app/profile/angelo.dusu4226/viz/OlistEcommerceVizualisationProject/Dashboard2)
 
-Top Kategori Produk: Kategori produk apa yang menghasilkan total pendapatan (R$) tertinggi?
+## 💡 Key Business Insights
+Logistics: The average delivery time reaches 12 days. This figure serves as a baseline for the logistics team to improve SLA (Service Level Agreement) efficiency.
 
-Demografi Pelanggan: Dari kota mana mayoritas pelanggan Olist berasal?
+Consumer Behavior: Checkout activity starts climbing at 10:00 AM and peaks between 2:00 PM - 4:00 PM (14:00 - 16:00). This is the golden time to run push-notification campaigns or flash sales.
 
-Preferensi Pembayaran: Apa metode pembayaran yang paling sering digunakan oleh pelanggan?
+Regional Dominance: Sao Paulo is not only the largest buyer market but also the most active seller hub, making it the main artery of the Olist ecosystem. Citizens of Sao Paulo spend the most on the Health & Beauty (beleza_saude) category.
 
-Efisiensi Logistik: Berapa rata-rata waktu (dalam hari) dari pelanggan menekan tombol beli hingga barang tiba?
+Reputation: The majority of customers are highly satisfied (dominated by 5 Stars with ~44.9k reviews), but there is a red flag on ~9k orders receiving 1 Star, which requires further investigation regarding seller quality or delivery issues.
 
-Analisis Peak Hour: Pada jam berapa pelanggan paling sering melakukan transaksi belanja?
-
-Pusat Distribusi (Seller): 5 kota mana yang menjadi asal seller paling aktif?
-
-Kepuasan Pelanggan: Bagaimana sebaran bintang/rating (1-5) dari keseluruhan pesanan?
-
-Analisis Kohort Spesifik (The Final Boss): Apa 3 kategori produk dengan pendapatan tertinggi khusus dari pembeli yang berdomisili di Sao Paulo? (Melibatkan JOIN 4 Tabel).
-
-🚀 Performance Optimization Highlight
-Pada tahap penyelesaian kueri kompleks (Tugas 9) yang menggabungkan 4 tabel dengan ratusan ribu baris data, terjadi anomali beban komputasi yang memakan waktu eksekusi hingga 3 menit (Full Table Scan).
-Masalah ini berhasil diatasi dengan mengimplementasikan teknik Database Indexing (CREATE INDEX) pada kolom Foreign Key dan parameter Filter, yang sukses memangkas waktu eksekusi kueri menjadi hitungan detik.
-
-📈 Dashboard & Visualizations
-Hasil dari ekstraksi SQL divisualisasikan ke dalam dua dashboard interaktif di Tableau untuk audiens yang berbeda:
-
-Executive Summary: Menampilkan KPI tingkat tinggi (Total Pendapatan, Total Pesanan, Rata-rata Waktu Pengiriman) untuk evaluasi performa bisnis oleh C-Level.
-
-Operational & Behavior: Menganalisis operasional lapangan, distribusi jam sibuk transaksi, dan komparasi asal demografi penjual vs. pembeli.
-
-🔗 Klik di sini untuk melihat Dashboard Interaktif di Tableau Public
-
-💡 Key Business Insights
-Logistik: Rata-rata waktu pengiriman barang mencapai 12 hari. Angka ini menjadi baseline bagi tim logistik untuk meningkatkan efisiensi SLA (Service Level Agreement).
-
-Perilaku Konsumen: Aktivitas checkout mulai merangkak naik pada pukul 10:00 dan mencapai puncaknya pada pukul 14:00 - 16:00. Ini adalah golden time untuk menjalankan campaign push-notification atau flash sale.
-
-Dominasi Wilayah: Sao Paulo tidak hanya menjadi pasar pembeli terbesar, tetapi juga pusat seller paling aktif, menjadikannya urat nadi utama ekosistem Olist. Warga Sao Paulo tercatat paling banyak menghabiskan uang untuk kategori Kesehatan & Kecantikan (beleza_saude).
-
-Reputasi: Mayoritas pelanggan sangat puas (mendominasi di Bintang 5 dengan ~44.9k ulasan), namun terdapat peringatan (red flag) pada ~9k pesanan yang mendapat Bintang 1, yang membutuhkan investigasi lebih lanjut terkait kualitas seller atau kendala pengiriman.
-
-Project ini dikembangkan sebagai portofolio Data Analytics.
+This project was developed as a Data Analytics portfolio.
